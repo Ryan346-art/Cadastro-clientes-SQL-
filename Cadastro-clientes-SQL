@@ -1,0 +1,127 @@
+-- Criação do banco de dados
+CREATE DATABASE cadastro_clientes;
+USE cadastro_clientes;
+
+-- Tabela tipo telefone
+CREATE TABLE tbl_tipo_telefone (
+    id INT PRIMARY KEY,
+    tipo VARCHAR(45)
+);
+
+-- Tabela estado civil
+CREATE TABLE tbl_estado_civil (
+    id INT PRIMARY KEY,
+    nome VARCHAR(45)
+);
+
+-- Tabela estado
+CREATE TABLE tbl_estado (
+    id INT PRIMARY KEY,
+    nome VARCHAR(50),
+    sigla VARCHAR(20)
+);
+
+-- Tabela cidade
+CREATE TABLE tbl_cidade (
+    id INT PRIMARY KEY,
+    nome VARCHAR(100),
+    id_estado INT,
+    FOREIGN KEY (id_estado) REFERENCES tbl_estado(id)
+);
+
+-- Tabela gênero
+CREATE TABLE tbl_genero (
+    id INT PRIMARY KEY,
+    nome VARCHAR(45)
+);
+
+-- Tabela cliente
+CREATE TABLE tbl_cliente (
+    id INT PRIMARY KEY,
+    nome VARCHAR(80),
+    data_nascimento DATE,
+    rg VARCHAR(15),
+    cpf VARCHAR(20),
+    email VARCHAR(255),
+    id_estado_civil INT,
+    id_genero INT,
+    FOREIGN KEY (id_estado_civil) REFERENCES tbl_estado_civil(id),
+    FOREIGN KEY (id_genero) REFERENCES tbl_genero(id)
+);
+
+-- Tabela cliente_endereco
+CREATE TABLE tbl_cliente_endereco (
+    id INT PRIMARY KEY,
+    cep VARCHAR(10),
+    numero VARCHAR(10),
+    logradouro VARCHAR(45),
+    bairro VARCHAR(50),
+    complemento VARCHAR(45),
+    id_cliente INT,
+    id_cidade INT,
+    FOREIGN KEY (id_cliente) REFERENCES tbl_cliente(id),
+    FOREIGN KEY (id_cidade) REFERENCES tbl_cidade(id)
+);-- Criação do banco de dados
+CREATE DATABASE cadastro_clientes;
+USE cadastro_clientes;
+
+-- Tabela tipo telefone
+CREATE TABLE tbl_tipo_telefone (
+    id INT PRIMARY KEY,
+    tipo VARCHAR(45)
+);
+
+-- Tabela estado civil
+CREATE TABLE tbl_estado_civil (
+    id INT PRIMARY KEY,
+    nome VARCHAR(45)
+);
+
+-- Tabela estado
+CREATE TABLE tbl_estado (
+    id INT PRIMARY KEY,
+    nome VARCHAR(50),
+    sigla VARCHAR(20)
+);
+
+-- Tabela cidade
+CREATE TABLE tbl_cidade (
+    id INT PRIMARY KEY,
+    nome VARCHAR(100),
+    id_estado INT,
+    FOREIGN KEY (id_estado) REFERENCES tbl_estado(id)
+);
+
+-- Tabela gênero
+CREATE TABLE tbl_genero (
+    id INT PRIMARY KEY,
+    nome VARCHAR(45)
+);
+
+-- Tabela cliente
+CREATE TABLE tbl_cliente (
+    id INT PRIMARY KEY,
+    nome VARCHAR(80),
+    data_nascimento DATE,
+    rg VARCHAR(15),
+    cpf VARCHAR(20),
+    email VARCHAR(255),
+    id_estado_civil INT,
+    id_genero INT,
+    FOREIGN KEY (id_estado_civil) REFERENCES tbl_estado_civil(id),
+    FOREIGN KEY (id_genero) REFERENCES tbl_genero(id)
+);
+
+-- Tabela cliente_endereco
+CREATE TABLE tbl_cliente_endereco (
+    id INT PRIMARY KEY,
+    cep VARCHAR(10),
+    numero VARCHAR(10),
+    logradouro VARCHAR(45),
+    bairro VARCHAR(50),
+    complemento VARCHAR(45),
+    id_cliente INT,
+    id_cidade INT,
+    FOREIGN KEY (id_cliente) REFERENCES tbl_cliente(id),
+    FOREIGN KEY (id_cidade) REFERENCES tbl_cidade(id)
+);
